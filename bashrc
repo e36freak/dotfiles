@@ -20,24 +20,6 @@ calc() {
   awk "@include \"math.awk\"; BEGIN {print $*}"
 }
 
-# count values in ~/change
-count_change() {
-  awk '
-    {
-      switch($1) {
-        case "quarters:": tot += $2 * 25; break;
-        case "dimes:": tot += $2 * 10; break;
-        case "nickels:": tot += $2 * 5; break;
-        case "pennies:": tot += $2; break;
-      }
-    }
-
-    END {
-      printf("$%0.2f\n", tot / 100);
-    }
-  ' "$HOME/change"
-}
-
 # run dd and send USR1 every minute
 dd_progress() {
   local pid
@@ -126,7 +108,6 @@ alias vinfo='info --vi-keys'
 alias moar='less'
 alias udate='TZ=UTC date'
 alias pac_removed='pac_removed -- -c'
-alias comics='comics --'
 alias alsaequal='alsamixer -D equal'
 
 # set PS1
